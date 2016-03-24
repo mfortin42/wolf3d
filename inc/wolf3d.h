@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:02:15 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/23 15:46:11 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/24 14:18:03 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ typedef struct	s_env
 	double		dirY;
 	double		planeX;
 	double		planeY;
-	double		time;
-	double		oldTime;
 
-	double			x;
-	double			y;
+	int			x;
+	int			y;
 	double		cameraX;
 	double		rayPosX;
 	double		rayPosY;
@@ -87,19 +85,21 @@ typedef struct	s_env
 	double		oldDirX;
 	double		oldPlaneX;
 
+	int			**worldMap;
+
 }				t_env;
 
 void	ft_ini_var(t_env *e);
-void	ft_wolf_1(t_env *e, int **worldMap);
+void	ft_wolf_1(t_env *e);
 void	ft_wolf_2(t_env *e);
-void	ft_wolf_3(t_env *e, int **worldMap);
+void	ft_wolf_3(t_env *e);
 void	ft_wolf_4(t_env *e);
 void	ft_wolf_5(t_env *e);
 
 int		ft_key_biding(int keycode, t_env *e);
 int		ft_key_release(int keycode, t_env *e);
-void	ft_do_key_action(t_env *e, int **worldMap);
-int		ft_key_core(t_env *e, int **worldMap);
+void	ft_do_key_action(t_env *e);
+int		ft_key_core(t_env *e);
 
 void	ft_put_pixel(t_env *e, int x, int y, int color);
 

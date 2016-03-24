@@ -6,13 +6,13 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:39:47 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/23 15:59:33 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:18:03 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void	ft_wolf_1(t_env *e, int **worldMap)
+void	ft_wolf_1(t_env *e)
 {
 	e->x = 0;
 	while (e->x < WIN_X)
@@ -28,7 +28,7 @@ void	ft_wolf_1(t_env *e, int **worldMap)
 		e->deltaDistY = sqrt(1 + (e->rayDirX * e->rayDirX) / (e->rayDirY * e->rayDirY));
 		e->hit = 0;
 		ft_wolf_2(e);
-		ft_wolf_3(e, worldMap);
+		ft_wolf_3(e);
 		ft_wolf_4(e);
 		ft_wolf_5(e);
 		e->x++;
@@ -59,7 +59,7 @@ void	ft_wolf_2(t_env *e)
 	}
 }
 
-void	ft_wolf_3(t_env *e, int **worldMap)
+void	ft_wolf_3(t_env *e)
 {
 	while (e->hit == 0)
 	{
@@ -75,7 +75,7 @@ void	ft_wolf_3(t_env *e, int **worldMap)
 			e->mapY += e->stepY;
 			e->side = 1;
 		}
-		if (worldMap[e->mapX][e->mapY] == 1)
+		if (e->worldMap[e->mapX][e->mapY] > 0)
 			e->hit = 1;
 	}
 }
@@ -83,10 +83,10 @@ void	ft_wolf_3(t_env *e, int **worldMap)
 void	ft_wolf_4(t_env *e)
 {
 	if (e->side == 0)
-		e->perpWallDist = ((e->mapX - e->rayPosX + (1 - e->stepX) / 2) / e->rayDirX);
+		e->perpWallDist = fabs((e->mapX - e->rayPosX + (1 - e->stepX) / 2) / e->rayDirX);
 	else
-		e->perpWallDist = ((e->mapY - e->rayPosY + (1 - e->stepY) / 2) / e->rayDirY);
-	e->lineHeight = (int)(WIN_Y / e->perpWallDist);
+		e->perpWallDist = fabs((e->mapY - e->rayPosY + (1 - e->stepY) / 2) / e->rayDirY);
+	e->lineHeight = abs((int)(WIN_Y / e->perpWallDist));
 	e->drawStart = -e->lineHeight / 2 + WIN_Y / 2;
 	if (e->drawStart < 0)
 		e->drawStart = 0;
@@ -101,11 +101,20 @@ void	ft_wolf_5(t_env *e)
 	while (e->y < WIN_Y)
 	{
 		if (e->y < e->drawStart)
-			e->color = 0x0000FF;
+			e->color = 0x69CCF0;
 		else if (e->y > e->drawEnd)
-			e->color = 0x00FF00;
+			e->color = 0xABD473;
 		else
-			e->color = 0xFF0000;
+		{
+			if (e->rayDirX >= 0 && e->side == 0)
+				e->color = 0xC41F3B;
+			else if (e->rayDirX < 0 && e->side == 0)
+				e->color = 0xFFF569;
+			else if (e->rayDirY <= 0 && e->side == 1)
+				e->color = 0xFF7D0A;
+			else
+				e->color = 0x0070DE;
+		}
 		ft_put_pixel(e, e->x, e->y, e->color);
 		e->y++;
 	}
@@ -115,7 +124,7 @@ void	ft_put_pixel(t_env *e, int x, int y, int color)
 {
 	int	*tmp;
 
-	if (y >= WIN_Y || x >= WIN_X || x < 0 || y < 0)
+	if (y > WIN_Y || x > WIN_X || x < 0 || y < 0)
 		return ;
 	tmp = (int *)&e->imc[(y * e->imlen) + (x * (e->bpp / 8))];
 	*tmp = color;

@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 16:03:44 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/23 14:00:33 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:18:20 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_key_release(int keycode, t_env *e)
 	return (0);
 }
 
-void	ft_do_key_action(t_env *e, int **worldMap)
+void	ft_do_key_action(t_env *e)
 {
 	if (e->lr == 1)
 	{
@@ -54,26 +54,26 @@ void	ft_do_key_action(t_env *e, int **worldMap)
 	}
 	if (e->ud == 1)
 	{
-		if (!(worldMap[(int)(e->posX + e->dirX * e->moveSpeed)][(int)(e->posY)]))
+		if (!(e->worldMap[(int)(e->posX + e->dirX * e->moveSpeed)][(int)(e->posY)]))
 			e->posX += e->dirX * e->moveSpeed;
-		if (!(worldMap[(int)(e->posX)][(int)(e->posY + e->dirY * e->moveSpeed)]))
+		if (!(e->worldMap[(int)(e->posX)][(int)(e->posY + e->dirY * e->moveSpeed)]))
 			e->posY += e->dirY * e->moveSpeed;
 	}
 	if (e->ud == -1)
 	{
-		if (!(worldMap[(int)(e->posX - e->dirX * e->moveSpeed)][(int)(e->posY)]))
+		if (!(e->worldMap[(int)(e->posX - e->dirX * e->moveSpeed)][(int)(e->posY)]))
 			e->posX -= e->dirX * e->moveSpeed;
-		if (!(worldMap[(int)(e->posX)][(int)(e->posY - e->dirY * e->moveSpeed)]))
+		if (!(e->worldMap[(int)(e->posX)][(int)(e->posY - e->dirY * e->moveSpeed)]))
 			e->posY -= e->dirY * e->moveSpeed;
 	}
 }
 
-int		ft_key_core(t_env *e, int **worldMap)
+int		ft_key_core(t_env *e)
 {
 	mlx_destroy_image(e->mlx, e->im);
 	e->im = mlx_new_image(e->mlx, WIN_X, WIN_Y);
-	ft_do_key_action(e, worldMap);
-	ft_wolf_1(e, worldMap);
+	ft_do_key_action(e);
+	ft_wolf_1(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->im, 0, 0);
 	return (1);
 }
