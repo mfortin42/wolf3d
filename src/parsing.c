@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:07:43 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/25 16:10:30 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/25 18:34:47 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_parsing(t_env *e, char *file)
 		ft_error("error : failed to close.\n");
 	if (e->c_nbr < 3 || e->l_nbr < 3)
 		ft_error("error : wrong number of lines or columns.\n");
-	if (e->worldMap[e->l_nbr - 2][e->c_nbr - 2] == 1)
-		ft_error("error : invalid spwan\n");
 }
 
 void	ft_first_read(t_env *e, int fd)

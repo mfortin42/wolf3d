@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:02:15 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/25 16:03:37 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/25 16:48:54 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 
 typedef struct	s_env
 {
+	double			xprime;
 	void			*mlx;
 	void			*win;
 
