@@ -6,7 +6,7 @@
 #    By: mfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 20:51:06 by mfortin           #+#    #+#              #
-#    Updated: 2016/03/21 13:47:17 by mfortin          ###   ########.fr        #
+#    Updated: 2016/03/25 13:53:58 by mfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ NAME = wolf3d
 
 SRC =	src/main.c \
 		src/wolf.c \
-		src/key_biding.c
+		src/key_biding.c \
+		src/utilities.c \
+		src/parsing.c
 
 OBJ = $(SRC:.c=.o)
 

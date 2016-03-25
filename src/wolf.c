@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:39:47 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/24 16:18:03 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/25 16:11:56 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,4 @@ void	ft_wolf_5(t_env *e)
 		ft_put_pixel(e, e->x, e->y, e->color);
 		e->y++;
 	}
-}
-
-void	ft_put_pixel(t_env *e, int x, int y, int color)
-{
-	int	*tmp;
-
-	if (y > WIN_Y || x > WIN_X || x < 0 || y < 0)
-		return ;
-	tmp = (int *)&e->imc[(y * e->imlen) + (x * (e->bpp / 8))];
-	*tmp = color;
 }

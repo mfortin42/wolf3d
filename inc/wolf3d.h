@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:02:15 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/24 14:18:03 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/25 16:03:37 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,72 +35,80 @@
 
 typedef struct	s_env
 {
-	void		*mlx;
-	void		*win;
+	void			*mlx;
+	void			*win;
 
-	void		*im;
-	char		*imc;
-	int			bpp;
-	int			imlen;
-	int			endi;
+	void			*im;
+	char			*imc;
+	int				bpp;
+	int				imlen;
+	int				endi;
 
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
+	unsigned int	c_nbr;
+	unsigned int	l_nbr;
+	int				**worldMap;
 
-	int			x;
-	int			y;
-	double		cameraX;
-	double		rayPosX;
-	double		rayPosY;
-	double		rayDirX;
-	double		rayDirY;
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			planeY;
 
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	int			stepX;
-	int			stepY;
-	int			hit;
-	int			side;
+	int				x;
+	int				y;
+	double			cameraX;
+	double			rayPosX;
+	double			rayPosY;
+	double			rayDirX;
+	double			rayDirY;
 
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int				mapX;
+	int				mapY;
+	double			sideDistX;
+	double			sideDistY;
+	double			deltaDistX;
+	double			deltaDistY;
+	double			perpWallDist;
+	int				stepX;
+	int				stepY;
+	int				hit;
+	int				side;
 
-	int			color;
-	double		moveSpeed;
-	double		rotSpeed;
+	int				lineHeight;
+	int				drawStart;
+	int				drawEnd;
 
-	int			lr;
-	int			ud;
+	int				color;
+	double			moveSpeed;
+	double			rotSpeed;
 
-	double		oldDirX;
-	double		oldPlaneX;
+	int				lr;
+	int				ud;
 
-	int			**worldMap;
+	double			oldDirX;
+	double			oldPlaneX;
 
-}				t_env;
+}					t_env;
 
-void	ft_ini_var(t_env *e);
-void	ft_wolf_1(t_env *e);
-void	ft_wolf_2(t_env *e);
-void	ft_wolf_3(t_env *e);
-void	ft_wolf_4(t_env *e);
-void	ft_wolf_5(t_env *e);
+void				ft_parsing(t_env *e, char *file);
+void				ft_first_read(t_env *e, int fd);
+void				ft_second_read(t_env *e, int fd);
+void				ft_check_line(t_env *e, char *line, unsigned int i);
 
-int		ft_key_biding(int keycode, t_env *e);
-int		ft_key_release(int keycode, t_env *e);
-void	ft_do_key_action(t_env *e);
-int		ft_key_core(t_env *e);
+void				ft_ini_var(t_env *e);
+void				ft_wolf_1(t_env *e);
+void				ft_wolf_2(t_env *e);
+void				ft_wolf_3(t_env *e);
+void				ft_wolf_4(t_env *e);
+void				ft_wolf_5(t_env *e);
 
-void	ft_put_pixel(t_env *e, int x, int y, int color);
+int					ft_key_biding(int keycode, t_env *e);
+int					ft_key_release(int keycode, t_env *e);
+void				ft_do_key_action(t_env *e);
+int					ft_key_core(t_env *e);
+
+void				ft_put_pixel(t_env *e, int x, int y, int color);
+void				ft_error(char *str);
 
 #endif
