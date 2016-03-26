@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:07:43 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/25 18:34:47 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/26 14:18:41 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_parsing(t_env *e, char *file)
 		ft_error("error : failed to close.\n");
 	if (e->c_nbr < 3 || e->l_nbr < 3)
 		ft_error("error : wrong number of lines or columns.\n");
+	ft_spawn_pos(e);
 }
 
 void	ft_first_read(t_env *e, int fd)
@@ -96,4 +97,29 @@ void	ft_check_line(t_env *e, char *line, unsigned int ind_l)
 		if (line[0] != '1' || line[e->c_nbr - 1] != '1')
 			ft_error("error : invalid map.\n");
 	}
+}
+
+int		ft_spawn_pos(t_env *e)
+{
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while (j < e->l_nbr - 1)
+	{
+		i = 0;
+		while (i < e->c_nbr - 1)
+		{
+			if (e->worldMap[j][i] == 0)
+			{
+				e->spawnX = j;
+				e->spawnY = i;
+				return (0);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (0);
 }
