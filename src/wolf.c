@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:39:47 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/25 17:15:04 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/28 15:16:33 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,6 @@ void	ft_wolf_4(t_env *e)
 	e->drawStart = -e->lineHeight / 2 + WIN_Y / 2;
 	if (e->drawStart < 0)
 		e->drawStart = 0;
-	/*	e->xprime = e->drawStart;
-		while (e->drawStart)
-		{
-		e->color = 0xCCFFFFFF;
-		ft_put_pixel(e, e->x, e->drawStart, e->color);
-		e->drawStart--;
-		}*/
 	e->drawEnd = e->lineHeight / 2 + WIN_Y / 2;
 	if (e->drawEnd >= WIN_Y)
 		e->drawEnd = WIN_Y - 1;
@@ -104,23 +97,11 @@ void	ft_wolf_4(t_env *e)
 
 void	ft_wolf_5(t_env *e)
 {
-	/*	e->drawStart = e->xprime;
-		e->drawEnd = e->lineHeight / 2 + WIN_Y / 2;
-		if (e->drawEnd >= WIN_Y)
-		e->drawEnd = WIN_Y - 1;
-		e->xprime = e->drawEnd;
-		while (e->drawEnd < WIN_Y - 1)
-		{
-		e->color = 0x994C00;
-		ft_put_pixel(e, e->x, e->drawEnd, e->color);
-		e->drawEnd++;
-		}
-		e->drawEnd = e->xprime;*/
 	e->y = 0;
 	while (e->y < WIN_Y)
 	{
 		if (e->y < e->drawStart)
-			e->color = 0x69CCF0;
+			e->color = 0xE077B5FE;
 		else if (e->y > e->drawEnd)
 			e->color = 0xABD473;
 		else if (e->rayDirX >= 0 && e->side == 0)

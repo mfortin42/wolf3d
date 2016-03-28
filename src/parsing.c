@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:07:43 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/26 14:18:41 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/28 15:28:02 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_first_read(t_env *e, int fd)
 	}
 	if (ver == -1)
 		ft_error("error : didn't read a file.\n");
+	free(line);
 }
 
 void	ft_second_read(t_env *e, int fd)
@@ -74,6 +75,7 @@ void	ft_second_read(t_env *e, int fd)
 		free(line);
 		ind_l++;
 	}
+	free(line);
 }
 
 void	ft_check_line(t_env *e, char *line, unsigned int ind_l)
