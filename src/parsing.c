@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:07:43 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/29 11:15:51 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 13:36:12 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,20 @@ void	ft_second_read(t_env *e, int fd)
 	unsigned int	ind_c;
 
 	ind_l = 0;
-	if ((e->worldMap = (int **)malloc(sizeof(int *) * e->l_nbr)) == NULL)
+	if ((e->world_map = (int **)malloc(sizeof(int *) * e->l_nbr)) == NULL)
 		ft_error("error : malloc failed\n");
 	while ((get_next_line(fd, &line)) > 0)
 	{
 		ft_check_line(e, line, ind_l);
-		if (!(e->worldMap[ind_l] = (int *)malloc(sizeof(int) * e->c_nbr)))
+		if (!(e->world_map[ind_l] = (int *)malloc(sizeof(int) * e->c_nbr)))
 			ft_error("error : malloc failed.\n");
 		ind_c = 0;
 		while (ind_c < e->c_nbr)
 		{
 			if (line[ind_c] == '1')
-				e->worldMap[ind_l][ind_c] = 1;
+				e->world_map[ind_l][ind_c] = 1;
 			else
-				e->worldMap[ind_l][ind_c] = 0;
+				e->world_map[ind_l][ind_c] = 0;
 			ind_c++;
 		}
 		free(line);
@@ -116,10 +116,10 @@ int		ft_spawn_pos(t_env *e)
 		i = 0;
 		while (i < e->c_nbr - 1)
 		{
-			if (e->worldMap[j][i] == 0)
+			if (e->world_map[j][i] == 0)
 			{
-				e->spawnX = j;
-				e->spawnY = i;
+				e->spawn_x = j;
+				e->spawn_y = i;
 				return (0);
 			}
 			i++;

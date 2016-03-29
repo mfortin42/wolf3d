@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:11:02 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/29 10:53:08 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 13:36:46 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_error(char *str)
 void	ft_ini_var(t_env *e)
 {
 	e->set = 1;
-	e->posX = e->spawnX + 0.50001;
-	e->posY = e->spawnY + 0.50001;
-	e->dirX = 1;
-	e->dirY = 0;
-	e->planeX = 0;
-	e->planeY = -0.66;
-	e->moveSpeed = 0.1;
-	e->rotSpeed = 0.055;
+	e->pos_x = e->spawn_x + 0.50001;
+	e->pos_y = e->spawn_y + 0.50001;
+	e->dir_x = 1;
+	e->dir_y = 0;
+	e->plane_x = 0;
+	e->plane_y = -0.66;
+	e->move_speed = 0.1;
+	e->rot_speed = 0.055;
 }
 
 void	ft_put_pixel(t_env *e, int x, int y, int color)

@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 16:03:44 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/29 10:53:41 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 13:36:08 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_key_core(t_env *e)
 	e->img.im = mlx_new_image(e->mlx, WIN_X, WIN_Y);
 	ft_do_key_action(e);
 	ft_wolf_1(e);
+	ft_print_map(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->sky.im, 0, 0);
 	mlx_put_image_to_window(e->mlx, e->win, e->img.im, 0, 0);
 	mlx_string_put(e->mlx, e->win, 960, 0, 0xFFFFFF, C_CONTROLS);

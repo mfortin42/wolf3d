@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 17:02:15 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/29 10:57:14 by mfortin          ###   ########.fr       */
+/*   Created: 2016/03/29 13:24:50 by mfortin           #+#    #+#             */
+/*   Updated: 2016/03/29 13:48:37 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef WOLF3D_H
+# define WOLF3D_H
 
 # include "../libft/includes/libft.h"
 # include <mlx.h>
@@ -28,8 +28,9 @@
 # define KEYRELEASE 3
 # define KEYPRESSMASK (1L<<0)
 # define KEYRELEASEMASK (1L<<1)
-//# define SKY "textures/sky.xpm"
-# define SKY "textures/world_of_warcraft_tbc_nagrand_by_jaywhykay.xpm"
+
+# define SKY "src/sky.xpm"
+
 # define ESC 53
 # define SET 34
 # define RESET 82
@@ -55,17 +56,16 @@
 # define C_SLASH    "|   /    | rotation speed down|"
 # define C_RESET    "|   0    |       reset        |"
 
-typedef struct	s_im
+typedef struct		s_im
 {
-	void		*im;
-	char		*imc;
-	int			bpp;
-	int			imlen;
-	int			endi;
-}				t_im;
+	void			*im;
+	char			*imc;
+	int				bpp;
+	int				imlen;
+	int				endi;
+}					t_im;
 
-
-typedef struct	s_env
+typedef struct		s_env
 {
 	t_im			img;
 	t_im			sky;
@@ -75,45 +75,45 @@ typedef struct	s_env
 
 	unsigned int	c_nbr;
 	unsigned int	l_nbr;
-	int				**worldMap;
+	int				**world_map;
 
-	unsigned int	spawnX;
-	unsigned int	spawnY;
+	unsigned int	spawn_x;
+	unsigned int	spawn_y;
 
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 
 	int				x;
 	int				y;
-	double			cameraX;
-	double			rayPosX;
-	double			rayPosY;
-	double			rayDirX;
-	double			rayDirY;
+	double			camera_x;
+	double			ray_pos_x;
+	double			ray_pos_y;
+	double			ray_dir_x;
+	double			ray_dir_y;
 
-	int				mapX;
-	int				mapY;
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			perpWallDist;
-	int				stepX;
-	int				stepY;
+	int				map_x;
+	int				map_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			perp_wall_dist;
+	int				step_x;
+	int				step_y;
 	int				hit;
 	int				side;
 
-	int				lineHeight;
-	int				drawStart;
-	int				drawEnd;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
 
 	int				color;
-	double			moveSpeed;
-	double			rotSpeed;
+	double			move_speed;
+	double			rot_speed;
 
 	int				set;
 	int				res;
@@ -122,8 +122,8 @@ typedef struct	s_env
 	int				ms_ud;
 	int				rs_ud;
 
-	double			oldDirX;
-	double			oldPlaneX;
+	double			old_dir_x;
+	double			old_plane_x;
 
 }					t_env;
 
@@ -151,5 +151,8 @@ void				ft_print_set(t_env *e);
 void				ft_put_pixel(t_env *e, int x, int y, int color);
 void				ft_error(char *str);
 void				ft_key_set(int keycode, t_env *e);
+
+void				ft_print_map(t_env *e);
+void				ft_print_mapb(t_env *e, int x, int y, int color);
 
 #endif
