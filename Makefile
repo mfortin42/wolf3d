@@ -6,7 +6,7 @@
 #    By: mfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 20:51:06 by mfortin           #+#    #+#              #
-#    Updated: 2016/03/25 13:53:58 by mfortin          ###   ########.fr        #
+#    Updated: 2016/03/29 10:58:18 by mfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ FLAG = -Wall -Wextra -Werror
 NAME = wolf3d
 
 SRC =	src/main.c \
+		src/parsing.c \
 		src/wolf.c \
 		src/key_biding.c \
-		src/utilities.c \
-		src/parsing.c
+		src/action_biding.c \
+		src/utilities.c
 
 OBJ = $(SRC:.c=.o)
 

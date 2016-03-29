@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 13:07:43 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/28 15:28:02 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 11:15:51 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ void	ft_second_read(t_env *e, int fd)
 	while ((get_next_line(fd, &line)) > 0)
 	{
 		ft_check_line(e, line, ind_l);
-		if ((e->worldMap[ind_l] = (int *)malloc(sizeof(int) * e->c_nbr)) == NULL)
+		if (!(e->worldMap[ind_l] = (int *)malloc(sizeof(int) * e->c_nbr)))
 			ft_error("error : malloc failed.\n");
 		ind_c = 0;
 		while (ind_c < e->c_nbr)
 		{
-			e->worldMap[ind_l][ind_c] = line[ind_c] - '0';
+			if (line[ind_c] == '1')
+				e->worldMap[ind_l][ind_c] = 1;
+			else
+				e->worldMap[ind_l][ind_c] = 0;
 			ind_c++;
 		}
 		free(line);
@@ -123,5 +126,6 @@ int		ft_spawn_pos(t_env *e)
 		}
 		j++;
 	}
+	ft_error("error : invalid spawn.\n");
 	return (0);
 }

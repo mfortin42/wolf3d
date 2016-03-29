@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:05:19 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/28 15:08:34 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 10:55:32 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		main(int argc, char **argv)
 {
-	t_env			e;
-	int	x;
-	int	y;
+	t_env	e;
+	int		x;
+	int		y;
 
 	x = WIN_X;
 	y = WIN_Y / 2;

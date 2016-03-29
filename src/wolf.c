@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:39:47 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/28 15:16:33 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 11:00:09 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	ft_wolf_1(t_env *e)
 		e->rayDirY = e->dirY + e->planeY * e->cameraX;
 		e->mapX = (int)e->rayPosX;
 		e->mapY = (int)e->rayPosY;
-		e->deltaDistX = sqrt(1 + (e->rayDirY * e->rayDirY) / (e->rayDirX * e->rayDirX));
-		e->deltaDistY = sqrt(1 + (e->rayDirX * e->rayDirX) / (e->rayDirY * e->rayDirY));
+		e->deltaDistX = sqrt(1 + (e->rayDirY * e->rayDirY)
+						/ (e->rayDirX * e->rayDirX));
+		e->deltaDistY = sqrt(1 + (e->rayDirX * e->rayDirX)
+						/ (e->rayDirY * e->rayDirY));
 		e->hit = 0;
 		ft_wolf_2(e);
 		ft_wolf_3(e);
@@ -83,9 +85,11 @@ void	ft_wolf_3(t_env *e)
 void	ft_wolf_4(t_env *e)
 {
 	if (e->side == 0)
-		e->perpWallDist = fabs((e->mapX - e->rayPosX + (1 - e->stepX) / 2) / e->rayDirX);
+		e->perpWallDist = fabs((e->mapX - e->rayPosX + (1 - e->stepX) / 2)
+						/ e->rayDirX);
 	else
-		e->perpWallDist = fabs((e->mapY - e->rayPosY + (1 - e->stepY) / 2) / e->rayDirY);
+		e->perpWallDist = fabs((e->mapY - e->rayPosY + (1 - e->stepY) / 2)
+						/ e->rayDirY);
 	e->lineHeight = abs((int)(WIN_Y / e->perpWallDist));
 	e->drawStart = -e->lineHeight / 2 + WIN_Y / 2;
 	if (e->drawStart < 0)

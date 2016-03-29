@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:02:15 by mfortin           #+#    #+#             */
-/*   Updated: 2016/03/28 15:16:12 by mfortin          ###   ########.fr       */
+/*   Updated: 2016/03/29 10:57:14 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define KEYRELEASE 3
 # define KEYPRESSMASK (1L<<0)
 # define KEYRELEASEMASK (1L<<1)
-# define SKY "textures/sky.xpm"
-
+//# define SKY "textures/sky.xpm"
+# define SKY "textures/world_of_warcraft_tbc_nagrand_by_jaywhykay.xpm"
 # define ESC 53
 # define SET 34
 # define RESET 82
@@ -70,7 +70,6 @@ typedef struct	s_env
 	t_im			img;
 	t_im			sky;
 
-	double			xprime;
 	void			*mlx;
 	void			*win;
 
@@ -133,8 +132,8 @@ void				ft_first_read(t_env *e, int fd);
 void				ft_second_read(t_env *e, int fd);
 void				ft_check_line(t_env *e, char *line, unsigned int i);
 int					ft_spawn_pos(t_env *e);
-
 void				ft_ini_var(t_env *e);
+
 void				ft_wolf_1(t_env *e);
 void				ft_wolf_2(t_env *e);
 void				ft_wolf_3(t_env *e);
@@ -144,9 +143,11 @@ void				ft_wolf_5(t_env *e);
 int					ft_key_biding(int keycode, t_env *e);
 int					ft_key_release(int keycode, t_env *e);
 void				ft_do_key_action(t_env *e);
+void				ft_rotation(t_env *e);
+void				ft_move(t_env *e);
 int					ft_key_core(t_env *e);
-void				ft_print_set(t_env *e);
 
+void				ft_print_set(t_env *e);
 void				ft_put_pixel(t_env *e, int x, int y, int color);
 void				ft_error(char *str);
 void				ft_key_set(int keycode, t_env *e);
